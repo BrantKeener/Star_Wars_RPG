@@ -5,70 +5,70 @@ let characters = [
     name : "Luke Skywalker",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/x_wing_background.jpg",
+    background: '<img src = "assets/images/x_wing_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Rey.jpg",
+    picture : '<img src = "assets/images/Rey.jpg"/>',
     name : "Rey",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/rey_background.jpg",
+    background: '<img src = "assets/images/rey_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Obi_Wan_Kenobi.jpg",
+    picture : '<img src = "assets/images/Obi_Wan_Kenobi.jpg"/>',
     name : "Obi-Wan Kenobi",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/obi_wan_background.jpg",
+    background: '<img src = "assets/images/obi_wan_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Chewbacca.jpg",
+    picture : '<img src = "assets/images/Chewbacca.jpg"/>',
     name : "Chewbacca",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/millenium_falcon.jpg",
+    background: '<img src = "assets/images/millenium_falcon.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Darth_vader.jpg",
+    picture : '<img src = "assets/images/Darth_vader.jpg"/>',
     name : "Darth Vader",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/darth_vader_background.jpg",
+    background: '<img src = "assets/images/darth_vader_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Darth_Sidious.jpg",
+    picture : '<img src = "assets/images/Darth_Sidious.jpg"/>',
     name : "Darth Sidious",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/darth_sidious_background.jpg",
+    background: '<img src = "assets/images/darth_sidious_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/Captain_Phasma.jpg",
+    picture : '<img src = "assets/images/Captain_Phasma.jpg"/>',
     name : "Captain Phasma",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/first_order.jpg",
+    background: '<img src = "assets/images/first_order.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     },
     {
-    picture : "../images/General_Grievous.jpg",
+    picture : '<img src = "assets/images/General_Grievous.jpeg"/>',
     name : "General Grievous",
     attackPower : 100,
     counterAttack : 100,
-    background: "../images/general_grievous_background.jpg",
+    background: '<img src = "assets/images/general_grievous_background.jpg"/>',
     startSound: "sounds",
     defeatSound: "other sounds",
     }
@@ -78,9 +78,9 @@ let characters = [
 
 $(document).ready(function() {
 
-    // Places character images in character select area.
-    console.log(characters[0].picture);
-    let picture = characters[0].picture;
-    console.log(picture);
-    $("#luke").append(picture);
+    // Places character images in character select area. 
+    for(let i = 0; i < characters.length; i++) {
+    let picture = characters[i].picture;
+    $("#character" + (i + 1)).append(picture);
+    };
 });
