@@ -6,8 +6,8 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: '<img src = "assets/images/x_wing_background.jpg"/>',
-    startSound: "sounds",
-    defeatSound: "other sounds",
+    startSound: "assets/sounds/luke_afraid.wav",
+    defeatSound: "assets/sounds/luke_impossible.wav",
     },
     {
     picture : '<img src = "assets/images/Rey.jpg"/>',
@@ -33,8 +33,8 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: '<img src = "assets/images/millenium_falcon.jpg"/>',
-    startSound: "sounds",
-    defeatSound: "other sounds",
+    startSound: "assets/sounds/chewie_chatting.wav",
+    defeatSound: "assets/sounds/chewie_roar.wav",
     },
     {
     picture : '<img src = "assets/images/Darth_vader.jpg"/>',
@@ -42,8 +42,8 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: '<img src = "assets/images/darth_vader_background.jpg"/>',
-    startSound: "sounds",
-    defeatSound: "other sounds",
+    startSound: "assets/sounds/dark_side_vader.wav",
+    defeatSound: "assets/sounds/darth_powerful.wav",
     },
     {
     picture : '<img src = "assets/images/Darth_Sidious.jpg"/>',
@@ -51,7 +51,7 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: '<img src = "assets/images/darth_sidious_background.jpg"/>',
-    startSound: "sounds",
+    startSound: "assets/sounds/forseen_sidious.wav",
     defeatSound: "other sounds",
     },
     {
