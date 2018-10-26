@@ -14,7 +14,7 @@ let characters = [
     name : "Padme Amidala",
     attackPower : 100,
     counterAttack : 100,
-    background: '<img src = "assets/images/rey_background.jpg"/>',
+    background: '<img src = "assets/images/padme_background.jpg"/>',
     startSound: "assets/sounds/amidala_start.wav",
     defeatSound: "assets/sounds/amidaladying.wav",
     },
@@ -55,20 +55,20 @@ let characters = [
     defeatSound: "assets/sounds/No..no..no...mp3",
     },
     {
-    picture : '<img id="character7" src="assets/images/Captain_Phasma.jpg" alt="Captain Phasma"/>',
-    name : "Captain Phasma",
+    picture : '<img id="character7" src="assets/images/stormtrooper.jpg" alt="Storm Trooper"/>',
+    name : "Storm Trooper",
     attackPower : 100,
     counterAttack : 100,
-    background: '<img src = "assets/images/first_order.jpg"/>',
-    startSound: "sounds",
-    defeatSound: "other sounds",
+    background: '<img src = "assets/images/stormtrooper_background.jpg"/>',
+    startSound: "assets/sounds/Its them.mp3",
+    defeatSound: "assets/sounds/storm_trooper_die.wav",
     },
     {
-    picture : '<img id="character8" src="assets/images/grand_moff_tarkin.jpeg" alt="Grand Moff Tarkin"/>',
+    picture : '<img id="character8" src="assets/images/grand_moff_tarkin.jpg" alt="Grand Moff Tarkin"/>',
     name : "Grand Moff Tarkin",
     attackPower : 100,
     counterAttack : 100,
-    background: '<img src = "assets/images/general_grievous_background.jpg"/>',
+    background: '<img src = "assets/images/tarkin_background.jpg"/>',
     startSound: "assets/sounds/tarkin_power.wav",
     defeatSound: "assets/sounds/storm_trooper_die.wav",
     }
@@ -91,27 +91,35 @@ $(document).ready(function() {
         switch(characterChoice) {
             case "character1" :
                 characterStartSound(0)
+                playerMove("#character1")
                 break;
             case "character2" :
                 characterStartSound(1)
+                playerMove("#character2")
                 break;
             case "character3" :
                 characterStartSound(2)
+                playerMove("#character3")
                 break;
             case "character4" :
                 characterStartSound(3)
+                playerMove("#character4")
                 break;
             case "character5" :
                 characterStartSound(4)
+                playerMove("#character5")
                 break;
             case "character6" :
                 characterStartSound(5)
+                playerMove("#character6")
                 break;
             case "character7" :
                 characterStartSound(6)
+                playerMove("#character7")
                 break;
             case "character8" :
                 characterStartSound(7)
+                playerMove("#character8")
                 break;
         } 
     });
@@ -123,4 +131,11 @@ $(document).ready(function() {
         startVocal.play();
     };
 
+    // Move selected character to player character area
+
+    function playerMove(char) {
+        console.log(char);
+        $(char).appendTo("#playerChar");
+
+    }
 });
