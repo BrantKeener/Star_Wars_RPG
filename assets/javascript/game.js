@@ -221,9 +221,10 @@ $(document).ready(function() {
         for(i = 0; i < characters.length; i++) {
             if(char === "#" + characters[i].characterID) {
                 $("#playerHP").text(characters[i].hitPoints);
-            }
-        }
-    }
+            };
+        };
+        console.log($("#playerHP").text());
+    };
 
     // Clear out all non-chosen characters from the selection menu
 
