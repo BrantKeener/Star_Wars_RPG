@@ -1,0 +1,15 @@
+
+.background_image {
+    background-size: 100%;
+    background-repeat: no-repeat;
+};
+
+.content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+};
+
+.character_area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

@@ -210,12 +210,17 @@ $(document).ready(function() {
     function lightSaber() {
         $(".character_selection").append(weapons.lightsaber);
     }
+
+    function blasterWeapon() {
+        $(".character_selection").append(weapons.blaster);
+    }
     // Set background for selected character
 
     function backgroundSet(num) {
         $(".background_image").css("background-image", characters[num].background);
     }
 
+    // Display character's HP
     
 
 });
