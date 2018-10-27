@@ -82,6 +82,10 @@ let characters = [
     }
 ];
 
+let weapons = {
+    lightsaber : '<img class="lightsaber" src="assets/images/lightsaber.jpg" alt="Lightsaber"/>',
+    blaster : '<img class="blaster" src="assets/images/blaster.png" alt="Blaster"/>',
+}
 let playerSelected = false;
 // Start with document ready
 
@@ -105,48 +109,56 @@ $(document).ready(function() {
                     playerMove("#character1")
                     charSelectClear(characterChoice, 1)
                     backgroundSet(0)
+                    lightSaber()
                     break;
                 case "character2" :
                     characterStartSound(1)
                     playerMove("#character2")
                     charSelectClear(characterChoice, 2)
                     backgroundSet(1)
+                    blasterWeapon()
                     break;
                 case "character3" :
                     characterStartSound(2)
                     playerMove("#character3")
                     charSelectClear(characterChoice, 3)
                     backgroundSet(2)
+                    lightSaber()
                     break;
                 case "character4" :
                     characterStartSound(3)
                     playerMove("#character4")
                     charSelectClear(characterChoice, 4)
                     backgroundSet(3)
+                    blasterWeapon()
                     break;
                 case "character5" :
                     characterStartSound(4)
                     playerMove("#character5")
                     charSelectClear(characterChoice, 5)
                     backgroundSet(4)
+                    lightSaber()
                     break;
                 case "character6" :
                     characterStartSound(5)
                     playerMove("#character6")
                     charSelectClear(characterChoice, 6)
                     backgroundSet(5)
+                    lightSaber()
                     break;
                 case "character7" :
                     characterStartSound(6)
                     playerMove("#character7")
                     charSelectClear(characterChoice, 7)
                     backgroundSet(6)
+                    blasterWeapon()
                     break;
                 case "character8" :
                     characterStartSound(7)
                     playerMove("#character8")
                     charSelectClear(characterChoice, 8)
                     backgroundSet(7)
+                    blasterWeapon()
                     break;
             }
         } 
@@ -193,6 +205,11 @@ $(document).ready(function() {
         }
     }
 
+    // Add lightsaber for jedi/sith and blaster for all others
+
+    function lightSaber() {
+        $(".character_selection").append(weapons.lightsaber);
+    }
     // Set background for selected character
 
     function backgroundSet(num) {
