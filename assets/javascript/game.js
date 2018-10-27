@@ -6,7 +6,7 @@ let characters = [
     characterID : "character1",
     hitPoints : 1,
     attackPower : 1,
-    counterAttack : 100,
+    counterAttack : 1,
     background: 'url("assets/images/x_wing_background.jpg")',
     startSound: "assets/sounds/luke_afraid.wav",
     defeatSound: "assets/sounds/luke_impossible.wav",
@@ -17,7 +17,7 @@ let characters = [
     characterID : "character2",
     hitPoints: 2,
     attackPower : 2,
-    counterAttack : 100,
+    counterAttack : 2,
     background: 'url("assets/images/valerii_sendetskyi_starship.jpg")',
     startSound: "assets/sounds/amidala_start.wav",
     defeatSound: "assets/sounds/amidaladying.wav",
@@ -28,7 +28,7 @@ let characters = [
     characterID : "character3",
     hitPoints: 3,
     attackPower : 3,
-    counterAttack : 100,
+    counterAttack : 3,
     background: 'url("assets/images/obi_wan_background.jpg")',
     startSound: "assets/sounds/Great disturbance.mp3",
     defeatSound: "assets/sounds/More powerful.mp3",
@@ -39,7 +39,7 @@ let characters = [
     characterID : "character4",
     hitPoints: 4,
     attackPower : 4,
-    counterAttack : 100,
+    counterAttack : 4,
     background: 'url("assets/images/millenium_falcon.jpg")',
     startSound: "assets/sounds/chewie_chatting.wav",
     defeatSound: "assets/sounds/chewie_roar.wav",
@@ -50,7 +50,7 @@ let characters = [
     characterID : "character5",
     hitPoints: 5,
     attackPower : 5,
-    counterAttack : 100,
+    counterAttack : 5,
     background: 'url("assets/images/toY6rLU_death_star.jpg")',
     startSound: "assets/sounds/dark_side_vader.wav",
     defeatSound: "assets/sounds/darth_powerful.wav",
@@ -61,7 +61,7 @@ let characters = [
     characterID : "character6",
     hitPoints: 6,
     attackPower : 6,
-    counterAttack : 100,
+    counterAttack : 6,
     background: 'url("assets/images/throne_room.jpg")',
     startSound: "assets/sounds/forseen_sidious.wav",
     defeatSound: "assets/sounds/No..no..no...mp3",
@@ -72,7 +72,7 @@ let characters = [
     characterID : "character7",
     hitPoints: 7,
     attackPower : 7,
-    counterAttack : 100,
+    counterAttack : 7,
     background: 'url("assets/images/stormtrooper_background.jpg")',
     startSound: "assets/sounds/Its them.mp3",
     defeatSound: "assets/sounds/storm_trooper_die.wav",
@@ -83,7 +83,7 @@ let characters = [
     characterID : "character8",
     hitPoints: 8,
     attackPower : 8,
-    counterAttack : 100,
+    counterAttack : 8,
     background: 'url("assets/images/19418.jpg")',
     startSound: "assets/sounds/tarkin_power.wav",
     defeatSound: "assets/sounds/storm_trooper_die.wav",
@@ -97,11 +97,13 @@ let weapons = {
 let playerSelected = false;
 let defenderSelected = false;
 let player = "";
+let defender = "";
 // Start with document ready
 
 $(document).ready(function() {
 
-    alert("Music will start as soon as ok is clicked. Song: The Light Crusaders by Ivan Torrent")
+    alert("Background music will begin playing as soon as character is selected. Adjust speakers as needed. Song: The Light Crusaders by Ivan Torrent")
+    
     // Places character images in character select area. 
     for(let i = 0; i < characters.length; i++) {
     let picture = characters[i].picture;
@@ -111,6 +113,8 @@ $(document).ready(function() {
     
     // Select character based on which image you click
     $(".selection").click(function(event){
+        let backgroundMusic = new Audio("assets/sounds/The Light Crusaders.mp3");
+        backgroundMusic.play();        
         if(playerSelected === true) {
             if(defenderSelected === false){
                 defenderEvaluate(event);
@@ -119,7 +123,7 @@ $(document).ready(function() {
         if(playerSelected === false) {
             let characterChoice = event.target.id;
             playerSelected = true;
-            setTimeout(defnederInstructions, 1000);
+            setTimeout(defnederInstructions, 250);
             switch(characterChoice) {
                 case "character1" :
                     player = characters[0].characterID;
@@ -189,23 +193,20 @@ $(document).ready(function() {
             }
     });
 
-    // Select defender
+    // Evaluate whether defender choice is also player choice
 
     function defenderEvaluate(event) {
-        console.log(event.target.id);
-        console.log(player);
         if(event.target.id !== player) {
             defenderSelect(event);
-            console.log("Hey!");
-        } else {
-            alert("don't fight yourself");
-        };
+        }
     };
 
+    // Defender selected that is not player
+
     function defenderSelect(event) {
-        console.log("selected");
         defenderSelected = true;
-        let defender = event.target.id;
+        setTimeout(attackInstructions, 250);
+        defender = event.target.id;
         if(defender !== player) {
             $("#" + defender).appendTo(".defending_character");
             for(i = 0; i < characters.length; i++) {
@@ -267,10 +268,12 @@ $(document).ready(function() {
 
     function lightSaber() {
         $(".character_selection").append(weapons.lightsaber);
+        attackClick();
     }
 
     function blasterWeapon() {
         $(".character_selection").append(weapons.blaster);
+        attackClick();
     }
     // Set background for selected character
 
@@ -287,11 +290,42 @@ $(document).ready(function() {
     // How to attack
 
     function attackInstructions() {
-        alert("Click on the " + $(".weapon").attr("id") + " to attack!")
-    }
-    $(".weapon").click(function() {
-        console.log("Hi!");
-    });
+        alert("Click on the " + $(".weapon").attr("id") + " to attack!");
+    };
+
+    // Attack click handler
+    function attackClick() {
+        $(".weapon").click(function() {
+            enemyDamaged();
+        });
+    };
+
+    // Attack hurts enemy
+    function enemyDamaged() {
+        let enemyHP = $("#defenderHP").text();
+        let playerAttack = "";
+        for(let i = 0; i < characters.length; i++) {
+            if(characters[i].characterID === player) {
+                playerAttack = characters[i].attackPower;
+            };
+        };
+        enemyHP -= playerAttack;
+        $("#defenderHP").text(enemyHP);
+        performCounterAttack();
+    };
+
+    // Counter attack player character
+    function performCounterAttack() {
+        let playerHP = $("#playerHP").text();
+        enemyAttack = "";
+        for(let i = 0; i < characters.length; i++) {
+            if(characters[i].characterID === defender) {
+                cAttack = characters[i].counterAttack;
+            };
+        };
+        playerHP -= cAttack;
+        $("#playerHP").text(playerHP);
+    };
 
     
 });
