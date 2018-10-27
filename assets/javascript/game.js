@@ -101,6 +101,7 @@ let player = "";
 
 $(document).ready(function() {
 
+    alert("Music will start as soon as ok is clicked. Song: The Light Crusaders by Ivan Torrent")
     // Places character images in character select area. 
     for(let i = 0; i < characters.length; i++) {
     let picture = characters[i].picture;
@@ -112,10 +113,8 @@ $(document).ready(function() {
     $(".selection").click(function(event){
         if(playerSelected === true) {
             if(defenderSelected === false){
-                defenderSelect(event);
-                setTimeout(attackInstructions, 1000);
+                defenderEvaluate(event);
                 };
-                defenderSelected = true;
             };
         if(playerSelected === false) {
             let characterChoice = event.target.id;
@@ -192,16 +191,30 @@ $(document).ready(function() {
 
     // Select defender
 
+    function defenderEvaluate(event) {
+        console.log(event.target.id);
+        console.log(player);
+        if(event.target.id !== player) {
+            defenderSelect(event);
+            console.log("Hey!");
+        } else {
+            alert("don't fight yourself");
+        };
+    };
+
     function defenderSelect(event) {
+        console.log("selected");
+        defenderSelected = true;
         let defender = event.target.id;
-        if(defender !== player)
-        $("#" + defender).appendTo(".defending_character");
-        for(i = 0; i < characters.length; i++) {
-            if(characters[i].characterID === defender){
-                $("#" + defender).append("<div id='defenderHP' class='hp'></div>");
-                $("#defenderHP").text(characters[i].hitPoints);
-                let defendVocal = new Audio(characters[i].startSound);
-                defendVocal.play();
+        if(defender !== player) {
+            $("#" + defender).appendTo(".defending_character");
+            for(i = 0; i < characters.length; i++) {
+                if(characters[i].characterID === defender){
+                    $("#" + defender).append("<div id='defenderHP' class='hp'></div>");
+                    $("#defenderHP").text(characters[i].hitPoints);
+                    let defendVocal = new Audio(characters[i].startSound);
+                    defendVocal.play();
+                };
             };
         };
     };
@@ -217,13 +230,11 @@ $(document).ready(function() {
     function playerMove(char) {
         $(char).appendTo(".player_character");
         $(char).append('<div id="playerHP" class="hp"></div>')
-        console.log(char);
         for(i = 0; i < characters.length; i++) {
             if(char === "#" + characters[i].characterID) {
                 $("#playerHP").text(characters[i].hitPoints);
             };
         };
-        console.log($("#playerHP").text());
     };
 
     // Clear out all non-chosen characters from the selection menu
