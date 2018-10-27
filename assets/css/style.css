@@ -1,4 +1,13 @@
 
+:root {
+    font-size: 16px;
+}
+
+.static_title {
+    font-size: 4rem;
+    text-align: center;
+}
+
 .background_image {
     background-size: 100%;
     background-repeat: no-repeat;
@@ -24,4 +33,14 @@
 .hp {
     text-align: center;
     background: white;
+}
+
+#blaster {
+    justify-content: center;
+    width: 50%;
+}
+
+#lightsaber {
+    justify-content: center;
+    width: 15%;
 }
