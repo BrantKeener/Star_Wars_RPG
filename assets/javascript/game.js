@@ -3,7 +3,8 @@ let characters = [
     {
     picture : '<img id="character1" src="assets/images/Luke_Skywalker.png" alt="Luke Skywalker"/>',
     name : "Luke Skywalker",
-    hitPoints : 100,
+    characterID : "character1",
+    hitPoints : 1,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/x_wing_background.jpg")',
@@ -13,7 +14,8 @@ let characters = [
     {
     picture : '<img id="character2" src="assets/images/amidala.jpg" alt="Padme Amidala"/>',
     name : "Padme Amidala",
-    hitPoints: 100,
+    characterID : "character2",
+    hitPoints: 2,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/padme_background.jpg")',
@@ -23,7 +25,8 @@ let characters = [
     {
     picture : '<img id="character3" src="assets/images/Obi_Wan_Kenobi.jpg" alt="Obi-Wan Kenobi"/>',
     name : "Obi-Wan Kenobi",
-    hitPoints: 100,
+    characterID : "character3",
+    hitPoints: 3,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/obi_wan_background.jpg")',
@@ -33,7 +36,8 @@ let characters = [
     {
     picture : '<img id="character4" src="assets/images/Chewbacca.jpg" alt="Chewbacca"/>',
     name : "Chewbacca",
-    hitPoints: 100,
+    characterID : "character4",
+    hitPoints: 4,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/millenium_falcon.jpg")',
@@ -43,7 +47,8 @@ let characters = [
     {
     picture : '<img id="character5" src = "assets/images/Darth_vader.jpg" alt="Darth Vader"/>',
     name : "Darth Vader",
-    hitPoints: 100,
+    characterID : "character5",
+    hitPoints: 5,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/darth_vader_background.jpg")',
@@ -53,7 +58,8 @@ let characters = [
     {
     picture : '<img id="character6" src = "assets/images/Darth_Sidious.jpg" alt="Darth Sidious"/>',
     name : "Darth Sidious",
-    hitPoints: 100,
+    characterID : "character6",
+    hitPoints: 6,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/darth_sidious_background.jpg")',
@@ -63,7 +69,8 @@ let characters = [
     {
     picture : '<img id="character7" src="assets/images/stormtrooper.jpg" alt="Storm Trooper"/>',
     name : "Storm Trooper",
-    hitPoints: 100,
+    characterID : "character7",
+    hitPoints: 7,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/stormtrooper_background.jpg")',
@@ -73,7 +80,8 @@ let characters = [
     {
     picture : '<img id="character8" src="assets/images/grand_moff_tarkin.jpg" alt="Grand Moff Tarkin"/>',
     name : "Grand Moff Tarkin",
-    hitPoints: 100,
+    characterID : "character8",
+    hitPoints: 8,
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/tarkin_background.jpg")',
@@ -104,9 +112,15 @@ $(document).ready(function() {
         if(playerSelected === true) {
             if(defenderSelected === false){
                 defender = event.target.id;
-                console.log(defender);
                 $("#" + defender).appendTo(".defending_character");
-            }
+                for(i = 0; i < characters.length; i++) {
+                    if(characters[i].characterID === defender){
+                        $("#" + defender).append("<div id='defenderHP' class='hp'></div>");
+                        $("#defenderHP").text(characters[i].hitPoints);
+                    };
+                };
+                defenderSelected = true;
+            };
         };
         if(playerSelected === false) {
             let characterChoice = event.target.id;
@@ -183,7 +197,13 @@ $(document).ready(function() {
 
     function playerMove(char) {
         $(char).appendTo(".player_character");
-        $(char).attr("class", "chosen");
+        $(char).append('<div id="playerHP" class="hp"></div>')
+        console.log(char);
+        for(i = 0; i < characters.length; i++) {
+            if(char === "#" + characters[i].characterID) {
+                $("#playerHP").text(characters[i].hitPoints);
+            }
+        }
     }
 
     // Clear out all non-chosen characters from the selection menu
@@ -229,7 +249,9 @@ $(document).ready(function() {
         $(".background_image").css("background-image", characters[num].background);
     }
 
-    // Display character's HP
+    // Grab character stats
 
 
+
+    
 });

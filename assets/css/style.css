@@ -10,11 +10,18 @@
 }
 
 .character_area {
+    justify-content: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
 .main_play {
+    justify-content: center;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
+}
+
+.hp {
+    text-align: center;
+    background: white;
 }
