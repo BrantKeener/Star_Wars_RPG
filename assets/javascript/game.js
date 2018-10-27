@@ -7,7 +7,7 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/x_wing_background.jpg")',
-    startSound: "assets/sounds/luke_afraid.WAV",
+    startSound: "assets/sounds/luke_afraid.wav",
     defeatSound: "assets/sounds/luke_impossible.wav",
     },
     {
@@ -57,7 +57,7 @@ let characters = [
     attackPower : 100,
     counterAttack : 100,
     background: 'url("assets/images/darth_sidious_background.jpg")',
-    startSound: "assets/sounds/forseen_sidious.WAV",
+    startSound: "assets/sounds/forseen_sidious.wav",
     defeatSound: "assets/sounds/No..no..no...mp3",
     },
     {
