@@ -2,14 +2,19 @@
 .background_image {
     background-size: 100%;
     background-repeat: no-repeat;
-};
+}
 
 .content {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-};
+    grid-template-rows: 1fr 4frfr;
+}
 
 .character_area {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+.main_play {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
 }

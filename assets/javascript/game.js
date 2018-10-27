@@ -87,6 +87,7 @@ let weapons = {
     blaster : '<img class="blaster" src="assets/images/blaster.png" alt="Blaster"/>',
 }
 let playerSelected = false;
+let defenderSelected = false;
 // Start with document ready
 
 $(document).ready(function() {
@@ -100,6 +101,13 @@ $(document).ready(function() {
     
     // Select character based on which image you click
     $(".selection").click(function(event){
+        if(playerSelected === true) {
+            if(defenderSelected === false){
+                defender = event.target.id;
+                console.log(defender);
+                $("#" + defender).appendTo(".defending_character");
+            }
+        };
         if(playerSelected === false) {
             let characterChoice = event.target.id;
             playerSelected = true;
@@ -175,6 +183,7 @@ $(document).ready(function() {
 
     function playerMove(char) {
         $(char).appendTo(".player_character");
+        $(char).attr("class", "chosen");
     }
 
     // Clear out all non-chosen characters from the selection menu
@@ -221,6 +230,6 @@ $(document).ready(function() {
     }
 
     // Display character's HP
-    
+
 
 });
