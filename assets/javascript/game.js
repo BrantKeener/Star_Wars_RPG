@@ -199,4 +199,6 @@ $(document).ready(function() {
         $(".background_image").css("background-image", characters[num].background);
     }
 
+    
+
 });
