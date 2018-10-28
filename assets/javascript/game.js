@@ -382,9 +382,9 @@ $(document).ready(function() {
 
         function characterDialoguePlay(def){
             let dialogueSound = new Audio(def);
-            backgroundMusic.volume = 0.2;
+            backgroundMusic.volume = 0.4;
             dialogueSound.play();
-            setTimeout(bgmVolumeUp, 3000);
+            setTimeout(bgmVolumeUp, 1000);
         };
 
         function bgmVolumeUp(){
