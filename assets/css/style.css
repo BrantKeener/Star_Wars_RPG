@@ -14,28 +14,42 @@
     text-align: center;
     color: var(--header_color);
     font-family: Death Star;
+    padding-bottom: 2%;
+    text-shadow: 5px 5px black;
 }
 
 .background_image {
-    background-size: 100%;
+    background-image: url("../images/opening_background.jpg");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+    padding-bottom: 3.2%;
 }
 
 .content {
     display: grid;
-    grid-template-rows: 1fr 4frfr;
+    grid-template-rows: .5fr 5fr;
 }
 
 .character_area {
-    justify-content: center;
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(4, 1fr);
 }
 
-.main_play {
-    justify-content: center;
+.character_selection {
     display: grid;
+    justify-content: center;
+}
+
+.main_play {
+    display: grid;
+    justify-content: center;
     grid-template-rows: repeat(2, 1fr);
+}
+
+.remaining_defenders, .defeated_defenders { 
+    display: grid;
+    justify-content: center;
 }
 
 .hp {
@@ -50,10 +64,35 @@
 
 #blaster {
     justify-content: center;
-    width: 50%;
+    width: 100%;
 }
 
 #lightsaber {
     justify-content: center;
-    width: 15%;
+    width: 100%;
+}
+
+.message, .start_message {
+    position: absolute;
+    background: black;
+    padding: 15%;
+    color: var(--header_color);
+}
+
+.message {
+    font-size: 5rem;
+    top: 15%;
+    left: 20%;
+    font-family: Death Star;
+}
+
+.start_message {
+    font-size: 2rem;
+    line-height: 2;
+    padding: 10% 21%;
+}
+
+button {
+    font-size: 2rem;
+    font-family: Death Star;
 }
