@@ -43,6 +43,11 @@
     background: white;
 }
 
+.defeated_tag {
+    text-align: center;
+    background: white;
+}
+
 #blaster {
     justify-content: center;
     width: 50%;

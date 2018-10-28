@@ -8,7 +8,7 @@ let characters = [
     attackPower : Math.floor(Math.random() * 5),
     counterAttack : Math.floor((Math.random() * 5) + 1),
     background: 'url("assets/images/x_wing_background.jpg")',
-    startSound: "assets/sounds/luke_afraid.wav",
+    startSound: "assets/sounds/wontfail.wav",
     defeatSound: "assets/sounds/luke_impossible.wav",
     },
     {
@@ -99,6 +99,8 @@ let defenderSelected = false;
 let player = "";
 let defender = "";
 let playerAttack = false;
+let bGMRunning = false;
+let backgroundMusic = new Audio("assets/sounds/The Light Crusaders.mp3");
 // Start with document ready
 
 $(document).ready(function() {
@@ -113,9 +115,12 @@ $(document).ready(function() {
     };
     
     // Select character based on which image you click
-    $(".selection").click(function(event){
-        let backgroundMusic = new Audio("assets/sounds/The Light Crusaders.mp3");
-        backgroundMusic.play();        
+    $(".selection").click(function(event) {
+        if(bGMRunning === false) {
+            backgroundMusic.play();
+            bGMRunning = true;
+            console.log("Playing!");
+        };     
         if(playerSelected === true) {
             if(defenderSelected === false){
                 defenderEvaluate(event);
@@ -337,15 +342,24 @@ $(document).ready(function() {
         if($("#defenderHP").text() <= 0) {
             for(let i = 0; i < characters.length; i++) {
                 if(characters[i].characterID === defender) {
-                    let deathSound = new Audio(characters[i].defeatSound);
-                    deathSound.play();
+                    defenderDeathSound(characters[i].defeatSound);
                 };
             };
             $("#" + defender).appendTo(".defeated_defenders");
             $("#" + defender).removeAttr("id", "class");
             $("#defenderHP").text("Defeated!");
+            $("#defenderHP").attr("class", "defeated_tag");
             $("#defenderHP").removeAttr("id");
             defenderSelected = false;
         };
     };
+
+    function defenderDeathSound(def){
+        backgroundMusic.volume = 0.5;
+        let deathSound = new Audio(def);
+        deathSound.play();
+    }
 });
+
+
+
