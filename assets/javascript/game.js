@@ -8,7 +8,7 @@ let characters = [
     attackPower : Math.floor(Math.random() * 5),
     counterAttack : Math.floor((Math.random() * 5) + 1),
     background: 'url("assets/images/x_wing_background.jpg")',
-    startSound: "assets/sounds/wontfail.wav",
+    startSound: "assets/sounds/Dark side.mp3",
     defeatSound: "assets/sounds/luke_impossible.wav",
     },
     {
