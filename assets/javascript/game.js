@@ -134,7 +134,7 @@ $(document).ready(function() {
     
     startMessage();
 
-    alert("Song: The Light Crusaders by Ivan Torrent")
+    alert("Song: The Light Crusaders by Ivan Torrent will play as soon as you click on a character.")
     
     function gameStart() {
         $(".start_message").remove();
