@@ -63,7 +63,7 @@ let characters = [
     attackPower : Math.floor(Math.random() * 5),
     counterAttack : Math.floor((Math.random() * 5) + 1),
     background: 'url("assets/images/throne_room.jpg")',
-    startSound: "assets/sounds/forseen_sidious.wav",
+    startSound: "assets/sounds/must_be_done.mp3",
     defeatSound: "assets/sounds/No..no..no...mp3",
     },
     {
